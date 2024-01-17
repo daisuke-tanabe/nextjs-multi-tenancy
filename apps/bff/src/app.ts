@@ -1,7 +1,8 @@
 import express from 'express';
 
+const port = process.env.PORT || 3001;
 const app = express();
 
-app.listen(8080, () => {
-  console.info('Example app listening on port 8080');
+app.listen(port, () => {
+  console.info(`bff running on ${port}`);
 });
