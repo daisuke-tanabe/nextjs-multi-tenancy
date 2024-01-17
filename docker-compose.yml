@@ -1,16 +1,22 @@
-version: "3"
-
 services:
+  # クライアントアプリ
   fe:
     container_name: fe
     build:
       context: .
       dockerfile: ./apps/fe/Dockerfile
+    command: npm run dev
     restart: always
+    volumes:
+      - ./apps/fe:/app/apps/fe
+      # Volume Tick
+      # https://jdlm.info/articles/2016/03/06/lessons-building-node-app-docker.html
+      - /app/node_modules
     ports:
       - 3000:3000
     networks:
       - app_network
+  # BFFサーバー
   bff:
     container_name: bff
     build:
