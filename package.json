@@ -12,9 +12,11 @@
   "scripts": {
     "build": "turbo build",
     "dev": "turbo dev",
+    "format": "prettier --write \"**/*.{js,ts,tsx,md}\"",
     "lint": "turbo lint"
   },
   "devDependencies": {
+    "prettier": "^3.2.4",
     "turbo": "^1.11.3"
   }
 }
