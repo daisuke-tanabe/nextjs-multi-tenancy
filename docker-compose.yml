@@ -16,13 +16,20 @@ services:
       - 3000:3000
     networks:
       - app_network
+
   # BFFサーバー
   bff:
     container_name: bff
     build:
       context: .
       dockerfile: ./apps/bff/Dockerfile
+    command: npm run dev
     restart: always
+    volumes:
+      - ./apps/bff:/app/apps/bff
+      # Volume Tick
+      # https://jdlm.info/articles/2016/03/06/lessons-building-node-app-docker.html
+      - /app/node_modules
     ports:
       - 3001:3001
     networks:
