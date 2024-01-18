@@ -12,4 +12,7 @@ docker-compose -f docker-compose.yml up -d
 
 # Stop all running containers
 docker-compose kill $(docker ps -q) && docker-compose rm $(docker ps -a -q)
+
+# Balus!!
+docker-compose down --rmi all --volumes --remove-orphans
 ```
