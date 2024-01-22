@@ -9,10 +9,16 @@ export const cognitoClient = new CognitoIdentityProviderClient({
   region: 'ap-northeast-1',
 });
 
-export const createCognitoSecretHash = (username: string) => {
-  const clientId = process.env.AWS_COGNITO_CLIENT_ID;
-  const clientSecret = process.env.AWS_COGNITO_CLIENT_SECRET;
+export const createCognitoSecretHash = ({
+  email,
+  clientId,
+  clientSecret,
+}: {
+  email: string;
+  clientId: string;
+  clientSecret: string;
+}) => {
   return createHmac('sha256', clientSecret)
-    .update(username + clientId)
+    .update(email + clientId)
     .digest('base64');
 };

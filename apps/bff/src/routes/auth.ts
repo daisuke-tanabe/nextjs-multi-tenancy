@@ -1,7 +1,10 @@
 import { Router } from 'express';
 
-import { signIn } from '../services';
+import { create, signIn, signUp } from '../services';
 
 export const authRouter = Router();
 
-authRouter.post('/signin', signIn);
+authRouter
+  .post('/create', create)
+  .post('/signup', signUp)
+  .post('/signin', signIn);
